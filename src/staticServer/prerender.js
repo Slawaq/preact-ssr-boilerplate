@@ -5,10 +5,17 @@ const fetch = require('node-fetch')
 const web = require('../../webpack/web')
 const renderer = require('../../webpack/renderer')
 
-let getState = async () => ({
-  videos: await (await fetch('http://localhost:8090/api/videos')).json(),
-  name: 'Derek'
-})
+let getState = async () => {
+  try {
+    return {
+      videos: await (await fetch('http://localhost:8090/api/videos')).json(),
+      name: await (await fetch('http://localhost:8090/api/name')).text()
+    }
+  } catch (err) {
+    console.error('PreRender state fetching failed', err.stack)
+    return { }
+  }
+}
 
 const tamplate = async () => {
   /**
@@ -27,20 +34,29 @@ let page = async (state, view) => (await tamplate())
   .replace('<!--$serverRenderHere-->', view)
 
 let createRender = async () => {
-  let cachedPage
+  let cachedPage, state, render
   try {
-    let state = await getState()
+    state = await getState()
 
     if (process.env.NODE_ENV === 'production') {
-      let render = await renderer.build()
+      render = await renderer.build()
       cachedPage = await page(state, render(state))
     } else {
-      renderer.watch(async (render) => {
+      renderer.watch(async (newRender) => {
+        render = newRender
         console.log('------------------------------------------------')
         console.log(`${new Date().toLocaleTimeString()}: Server Side Renderer Updated!`)
         cachedPage = await page(state, render(state))
       })
     }
+
+    // TODO: Replace on subscribe, or some polling
+    setInterval(async () => {
+      state = await getState()
+      if (render)
+        cachedPage = await page(state, render(state))
+    }, 1000)
+
   } catch (err) {
     console.error('SERVER SIDE RENDERING FAILED')
     console.error(err.stack)

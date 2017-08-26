@@ -8,11 +8,13 @@ const prerender = require('./prerender')
 const port = process.env.PORT || 8080
 
 let app = async () => {
+  let handler = await (process.env.NODE_ENV === 'production' ? prod() : dev())
+
   let prerenderMiddleware = await prerender()
 
-  let handler = await (process.env.NODE_ENV === 'production' ? prod : dev)()
-
-  let server = http.createServer((req, res) => prerenderMiddleware(req, res, () => handler(req, res)))
+  let server = http.createServer((req, res) =>
+    prerenderMiddleware(req, res, () =>
+      handler(req, res)))
 
   return new Promise((resolve, reject) => server.listen(port, '0.0.0.0', e => e ? reject(e) : resolve()))
 }

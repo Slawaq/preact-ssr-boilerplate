@@ -9,7 +9,7 @@ export default class App extends Component {
       <div class={style.app}>
         <center>
           <div class={style.logo} />
-          <h2>Hello, {name}!</h2>
+          <h2>👋🏻 Hello, {name}!</h2>
           <div>We've {videos.length} videos!</div>
         </center>
       </div>

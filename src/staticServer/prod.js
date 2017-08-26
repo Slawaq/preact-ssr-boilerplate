@@ -4,7 +4,6 @@ const serveStatic = require('serve-static')
 const finalhandler = require('finalhandler')
 
 const web = require('../../webpack/web')
-const renderer = require('./renderer')
 
 module.exports = async () => {
   await web.build()
@@ -14,9 +13,7 @@ module.exports = async () => {
     index: [ 'index.html' ]
   })
 
-  let prerenderMiddleware = await renderer()
-
-  let handler = (req, res) => prerenderMiddleware(req, res, () => serve(req, res, finalhandler(req, res)))
+  let handler = (req, res) => serve(req, res, finalhandler(req, res))
 
   return handler
 }

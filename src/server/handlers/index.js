@@ -7,6 +7,7 @@ let setupRouter = state => {
   router.use(bodyParser.json())
 
   router.get('/api/videos', require('./videos')(state), finisher)
+  router.get('/api/name', require('./name')(state), finisher)
 
   return router
 }
