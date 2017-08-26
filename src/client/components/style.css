@@ -1,0 +1,12 @@
+
+.app {
+    min-width: 400px;
+    height: 100%;
+}
+
+.logo {
+    margin-top: 10px;
+    width: 256px;
+    height: 78px;
+    background-image: url('./logo.png');
+}

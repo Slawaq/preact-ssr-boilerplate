@@ -1,0 +1,10 @@
+{
+    "extends": ["standard", "standard-preact"],
+    "globals": {
+        "fetch": true
+    },
+    "rules": {
+        "padded-blocks":"off",
+        "curly": ["error", "multi-or-nest"]
+    }
+}
