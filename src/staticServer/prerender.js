@@ -71,7 +71,7 @@ module.exports = async () => {
 
   return (req, res, next) => {
     let page = render()
-    if (page && req.url === '/')
+    if (page && (req.url === '/' || req.url === '/about'))
       res.end(page)
     else
       next()

@@ -22,3 +22,13 @@ textarea, input, button {
 * {
 	box-sizing: border-box;
 }
+
+.link {
+    transition: all .5s ease-out;
+    text-decoration: none;
+    color: #4391ff;
+}
+
+.link:hover {
+    color: #71AAFF;
+}

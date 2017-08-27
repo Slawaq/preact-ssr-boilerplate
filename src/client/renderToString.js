@@ -3,4 +3,4 @@ import render from 'preact-render-to-string'
 
 import App from './components/App'
 
-module.exports = (props) => render(<App {...props} />)
+module.exports = (props, pathname) => render(<App {...props} pathname={pathname} />)

@@ -18,7 +18,7 @@ let config = merge(commonConfig, {
     libraryTarget: 'commonjs2'
   },
   plugins: [
-    new ExtractTextPlugin('style.node.css')
+    new ExtractTextPlugin('style.node.js')
   ]
 })
 

@@ -1,31 +1,14 @@
-import { h, Component } from 'preact'
-import request from 'superagent'
+import Router from 'preact-router'
+import { h } from 'preact'
 
-import style from './style.css'
-import logo from './logo.png'
+import Videos from './videos/Videos'
+import About from './about/About'
 
-export default class App extends Component {
+const App = (props) => (
+  <Router url={props.pathname}>
+    <Videos default {...props} />
+    <About path='/about' />
+  </Router>
+)
 
-  action = async () => {
-    let response = await request.get('https://api.github.com/repos/Slawaq/preact-ssr-boilerplate')
-
-    this.setState({ stars: response.body.stargazers_count })
-  }
-
-  render ({ name, videos }, { stars }) {
-    return (
-      <div class={style.app}>
-        <center>
-          <div class={style.logoContainer}>
-            <img src={logo} class={style.logo} />
-          </div>
-          <h2>👋🏻 Hello, {name}!</h2>
-          <div>We've {videos.length} videos!</div>
-          <button class={style.button} onClick={this.action}>👽</button>
-          {stars != null ? <div>Also this project has {stars} ⭐️!</div> : ''}
-        </center>
-      </div>
-    )
-  }
-
-}
+export default App

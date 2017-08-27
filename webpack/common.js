@@ -46,15 +46,7 @@ module.exports = {
               }
             },
             {
-              loader: 'postcss-loader',
-              options: {
-                plugins: (loader) => [
-                  require('postcss-import')({ root: loader.resourcePath }),
-                  require('postcss-flexbugs-fixes')(),
-                  require('postcss-flexboxfixer')(),
-                  require('autoprefixer')()
-                ]
-              }
+              loader: 'postcss-loader'
             }
           ]
         })

@@ -1,0 +1,14 @@
+
+.about {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+}
+
+.link {
+    composes: link from '../../assets/style.css';
+    display: block;
+    font-size: 20px;
+}
+
