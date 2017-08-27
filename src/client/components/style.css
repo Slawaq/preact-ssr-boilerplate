@@ -4,26 +4,41 @@
     height: 100%;
 }
 
-.logo {
-    margin-top: 10px;
+.logoContainer {
     width: 256px;
     height: 78px;
-    background-image: url('./logo.png');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    margin-top: 10px;
+    width: 100px;
+    transition: all .5s ease-out;
+}
+
+.logoContainer:hover .logo {
+    width: 200px;
+    height: auto;
 }
 
 .button {
-    font-size: 20px;
+    display: block;
+    text-align: center;
     margin-top: 10px;
-    padding: 0.2em 0.4em;
-    border-radius: 40px;
-    border: none;
-    border: 1px #dddddd solid;
+    font-size: 30px;
+    padding: 4px 9px 3px;
+    width: 50px;
+    height: 50px;
+    line-height: 30px;
+    border-radius: 50%;
+    border: 1px #ddd solid;
     background: none;
     cursor: pointer;
     transition: all 450ms ease-out;
 }
 
 .button:hover {
-    background-color: #ADDEAD;
-    border: 1px solid #ADDEAD;
+    background-color: #ddd;
 }

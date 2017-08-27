@@ -2,6 +2,7 @@ import { h, Component } from 'preact'
 import request from 'superagent'
 
 import style from './style.css'
+import logo from './logo.png'
 
 export default class App extends Component {
 
@@ -15,7 +16,9 @@ export default class App extends Component {
     return (
       <div class={style.app}>
         <center>
-          <div class={style.logo} />
+          <div class={style.logoContainer}>
+            <img src={logo} class={style.logo} />
+          </div>
           <h2>👋🏻 Hello, {name}!</h2>
           <div>We've {videos.length} videos!</div>
           <button class={style.button} onClick={this.action}>👽</button>
