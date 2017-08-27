@@ -10,3 +10,20 @@
     height: 78px;
     background-image: url('./logo.png');
 }
+
+.button {
+    font-size: 20px;
+    margin-top: 10px;
+    padding: 0.2em 0.4em;
+    border-radius: 40px;
+    border: none;
+    border: 1px #dddddd solid;
+    background: none;
+    cursor: pointer;
+    transition: all 450ms ease-out;
+}
+
+.button:hover {
+    background-color: #ADDEAD;
+    border: 1px solid #ADDEAD;
+}

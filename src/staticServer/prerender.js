@@ -50,10 +50,11 @@ let createRender = async () => {
       })
     }
 
-    // TODO: Replace on subscribe, or some polling
+    // TODO: Replace on subscribe, or some polling, STATE DIFFS!
     setInterval(async () => {
-      state = await getState()
-      if (render)
+      let newState = await getState()
+      let stateIsSame = () => state.name === newState.name && state.videos.length === newState.videos.length && state.videos.every((v, i) => v === newState.videos[i])
+      if (render && !stateIsSame())
         cachedPage = await page(state, render(state))
     }, 1000)
 

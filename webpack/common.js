@@ -15,9 +15,19 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env'],
+            presets: [
+              ['env', {
+                useBuiltIns: true
+              }]
+            ],
             plugins: [
-              ['babel-plugin-transform-react-jsx', { pragma: 'h' }]
+              ['babel-plugin-transform-react-jsx', { pragma: 'h' }],
+              ['babel-plugin-transform-class-properties'],
+              ['babel-plugin-transform-runtime', {
+                regenerator: true,
+                helpers: false,
+                polyfill: false
+              }]
             ]
           }
         }

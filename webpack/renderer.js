@@ -52,9 +52,13 @@ let watch = subscriber => webpack(config).watch({}, (err, stats) => {
   if (stats.hasWarnings())
     console.warn(info.warnings)
 
-  let modulePath = path.resolve(outputFolder, filename)
-  delete require.cache[require.resolve(modulePath)]
-  subscriber(require(modulePath))
+  try {
+    let modulePath = path.resolve(outputFolder, filename)
+    delete require.cache[require.resolve(modulePath)]
+    subscriber(require(modulePath))
+  } catch (e) {
+    console.log('CANNOT IMPORT', e.stack)
+  }
 })
 
 module.exports = { build, watch }

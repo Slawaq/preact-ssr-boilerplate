@@ -59,15 +59,16 @@ let compiler = webpack(process.env.NODE_ENV === 'production' ? prodConfig : devC
 
 let build = () => new Promise((resolve, reject) => compiler.run((err, stats) => {
   if (err) {
-    reject(err.details || err.stack)
+    reject(err)
     return
   }
 
   const info = stats.toJson()
 
-  if (stats.hasErrors())
-    reject(info.errors)
-  else {
+  if (stats.hasErrors()) {
+    console.log(info.errors)
+    reject(new Error(info.errors))
+  } else {
     console.log(stats.toString({
       colors: true
     }))

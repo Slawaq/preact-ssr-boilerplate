@@ -15,6 +15,10 @@ html, body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+textarea, input, button { 
+	outline: none;
+}
+
 * {
 	box-sizing: border-box;
 }
