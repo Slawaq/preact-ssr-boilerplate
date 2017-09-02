@@ -9,6 +9,7 @@ module.exports = () => {
 
   let build = webpackMiddleware(compiler, {
     hot: true,
+    publicPath: '/',
     stats: {
       colors: true
     }

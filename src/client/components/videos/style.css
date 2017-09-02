@@ -18,6 +18,26 @@
     height: auto;
 }
 
+.loader, .error {
+    margin-top: 25%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.videos {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1440px;
+    flex-wrap: wrap;
+    padding: 0px 0px;
+}
+
+.video {
+    width: 48em;
+    height: 27em;
+}
+
 .button {
     display: block;
     text-align: center;
@@ -36,4 +56,28 @@
 
 .button:hover {
     background-color: #ddd;
+}
+
+@media only screen and (min-device-width: 720px) {
+    .video {
+        width: 320px;
+        height: 180px;
+    }
+
+    .videos {
+        padding: 0px 40px;
+    
+    }
+}
+
+@media only screen and (min-device-width: 1024px) {
+    .video {
+        width: 420px;
+        height: 270px;
+    }
+
+    .videos {
+        padding: 0px 50px;
+    
+    }
 }

@@ -57,7 +57,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 8192
+              limit: 1024
             }
           }
         ]
@@ -72,7 +72,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 26000,
+              limit: 1000,
               mimetype: 'image/svg+xml'
             }
           }

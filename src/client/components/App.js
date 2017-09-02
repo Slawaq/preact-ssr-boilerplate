@@ -7,7 +7,7 @@ import About from './about/About'
 const App = (props) => (
   <Router url={props.pathname}>
     <Videos default {...props} />
-    <About path='/about' />
+    <About path='/about' {...props} />
   </Router>
 )
 

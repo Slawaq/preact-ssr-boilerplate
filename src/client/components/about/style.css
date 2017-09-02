@@ -6,9 +6,12 @@
     min-height: 500px;
 }
 
-.link {
-    composes: link from '../../assets/style.css';
-    display: block;
+.text {
     font-size: 20px;
+    text-align: center;
+    line-height: 30px;
 }
 
+.link {
+    composes: link from '../../assets/style.css';
+}

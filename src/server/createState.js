@@ -3,17 +3,17 @@ class State {
   static getDefault () {
     return {
       videos: [
-        123214,
-        6546,
-        32,
-        432645,
-        12312,
-        12541,
-        1212,
-        1254756,
-        56432332
+        'c2ExwOAjLNw',
+        'q9AoGc-OTCk',
+        'VVV4xeWBIxE',
+        'GzLvqCTvOQY',
+        'P73REgj-3UE',
+        'BN-34JfUrHY'
       ],
-      name: 'Derek'
+      about: {
+        author: 'Slawaq',
+        contact: 'dereckvk@gmail.com'
+      }
     }
   }
 
@@ -30,8 +30,8 @@ class State {
     return this.videos
   }
 
-  getName () {
-    return this.name
+  getAbout () {
+    return this.about
   }
 
 }

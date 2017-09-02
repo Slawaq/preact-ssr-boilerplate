@@ -12,6 +12,7 @@ let initialState = window.__INITIAL_STATE__ || {
 let root = document.getElementById('app')
 
 if (module.hot) {
+  require('preact/devtools')
   module.hot.accept('./components/App', () => {
     const NextApp = require('./components/App').default
     render(<NextApp {...initialState} />, root, root.lastElementChild)

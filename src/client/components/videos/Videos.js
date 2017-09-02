@@ -1,36 +1,65 @@
 import { h, Component } from 'preact'
-import request from 'superagent'
+
+import api from '../../api'
 
 import style from './style.css'
-import { link } from '../../assets/style.css'
 import logo from './logo.png'
+
+import Video from '../video/Video'
 
 export default class Videos extends Component {
 
-  action = async () => {
-    let response = await request.get('https://api.github.com/repos/Slawaq/preact-ssr-boilerplate')
-
-    this.setState({ stars: response.body.stargazers_count })
+  constructor () {
+    super()
+    this.state = {
+      videos: [],
+      loaded: false,
+      error: false
+    }
   }
 
-  render ({ name, videos }, { stars }) {
+  componentDidMount () {
+    if (!this.props.loaded)
+      this.load()
+  }
+
+  async load () {
+    try {
+      this.setState({
+        videos: api.videos(),
+        loaded: true
+      })
+    } catch (e) {
+      this.setState({ error: true })
+    }
+  }
+
+  render (props, state) {
+
+    let videos = props.loaded ? props.videos : state.videos
+
+    if (state.error) {
+      return (
+        <div class={style.error}>ERROR</div>
+      )
+    }
+
+    if (!props.loaded && !state.loaded) {
+      return (
+        <div class={style.loader}>LOADING</div>
+      )
+    }
+
     return (
       <div>
         <center>
           <div class={style.logoContainer}>
             <img src={logo} class={style.logo} />
           </div>
-          <h2>👋🏻 Hello, {name}!</h2>
-          <div>We've {videos.length} videos!</div>
-          <button class={style.button} onClick={this.action}>👽</button>
-          {stars != null ? (
-            <div>
-              Also this project has {stars} ⭐️
-              <br />
-              <a class={link} href='/about'>about</a>
-            </div>
-          ) : ''}
         </center>
+        <div class={style.videos}>
+          {videos.map(v => (<div class={style.video}><Video id={v} /></div>))}
+        </div>
       </div>
     )
   }

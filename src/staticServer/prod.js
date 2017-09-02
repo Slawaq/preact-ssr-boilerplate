@@ -10,7 +10,7 @@ module.exports = async () => {
 
   let serve = serveStatic(path.resolve(__dirname, '../..', 'build'), {
     extensions: [ 'html', 'htm', 'js' ],
-    index: [ 'index.html' ]
+    index: [ 'index.html', 'about', 'about.html' ]
   })
 
   let handler = (req, res) => serve(req, res, finalhandler(req, res))

@@ -3,7 +3,7 @@ const http = require('http')
 const dev = require('./dev')
 const prod = require('./prod')
 
-const prerender = require('./prerender')
+const prerender = require('./prerender/')
 
 const port = process.env.PORT || 8080
 
